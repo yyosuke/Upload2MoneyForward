@@ -13,8 +13,8 @@ def doUpload(input_file):
 
   surl = "https://moneyforward.com/users/sign_in"
   iurl = "https://moneyforward.com/cf#cf_new"
-  user = "input your userid(email)"
-  password = "input your email"
+  user = "input your userid"
+  password = "input your password"
 
   try:
     driver = webdriver.Chrome('./bin/chromedriver')
