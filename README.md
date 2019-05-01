@@ -46,4 +46,4 @@ You can execute this program using:
 [yysosuke](https://twitter.com/yyosuke)
 
 ## License
-[MIT](https://opensource.org/licenses/mit-license.php)
+[GPL](https://github.com/yyosuke/Upload2MoneyForward/blob/master/LICENSE)
