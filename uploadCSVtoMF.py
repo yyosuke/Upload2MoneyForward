@@ -11,25 +11,34 @@ from datetime import datetime
 
 def doUpload(input_file):
 
-  surl = "https://moneyforward.com/users/sign_in"
+  topurl = "https://moneyforward.com/"
   iurl = "https://moneyforward.com/cf#cf_new"
-  user = "input your userid"
-  password = "input your password"
+  user = "input your userid(email)"
+  password = "input your email"
+  
 
   try:
     driver = webdriver.Chrome('./bin/chromedriver')
     driver.implicitly_wait(10)
-    driver.get(surl)
+    driver.get(topurl)
+    driver.implicitly_wait(10)
+    elem = driver.find_elements_by_link_text("ログイン")
+    elem[0].click()
+    driver.implicitly_wait(10)
+    elem = driver.find_elements_by_link_text("メールアドレスでログイン")
+    elem[0].click()
+    driver.implicitly_wait(10)
   
     # login
-    elem = driver.find_element_by_id("sign_in_session_service_email")
+    elem = driver.find_element_by_name("mfid_user[email]")
     elem.clear()
     elem.send_keys(user)
-    elem = driver.find_element_by_id("sign_in_session_service_password")
+    elem.submit()
+    driver.implicitly_wait(10)
+    elem = driver.find_element_by_name("mfid_user[password]")
     elem.clear()
     elem.send_keys(password)
-    elem = driver.find_element_by_id("login-btn-sumit")
-    elem.click()
+    elem.submit()
   
     # open 
     f = open(input_file, mode='r', encoding='utf-8')
@@ -79,7 +88,8 @@ def doUpload(input_file):
         elem.clear()
         elem.send_keys(row[3])
 
-        #input date info elem = driver.find_element_by_id("updated-at")
+        #input date info
+        elem = driver.find_element_by_id("updated-at")
         elem.clear()
         elem.send_keys(row[0])
         
